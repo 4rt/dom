@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main id="app">
+    <preloader v-show="loading" />
+    <modal />
+    <game-play v-if="playerData.gameId" />
+    <game-starter v-else />
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapGetters } from "vuex";
+import Preloader from "@/components/Preloader";
+import GamePlay from "@/components/GamePlay";
+import GameStarter from "@/components/GameStarter";
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
+    Preloader,
+    GamePlay,
+    GameStarter,
+  },
+  computed: {
+    ...mapGetters("common", ["loading", "playerData"])
+  },
+  mounted() {
+    document.getElementById("preloader").style.display = "none";
   }
 }
 </script>
 
 <style lang="scss">
+@import "~nes.css/css/nes.css";
+html,
+body,
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  background-color: darkturquoise;
+  overflow: auto;
 }
 </style>
