@@ -1,6 +1,7 @@
 <template>
   <section id="game-play">
-    <status-bar />
+    <status-bar @showShop="shopVisible = !shopVisible" />
+    <shop v-show="shopVisible" @close="shopVisible = false" />
     <tasks />
     <score-board />
   </section>
@@ -10,12 +11,19 @@
 import StatusBar from "@/components/StatusBar";
 import Tasks from "@/components/Tasks";
 import ScoreBoard from "@/components/ScoreBoard";
+import Shop from "@/components/Shop";
 
 export default {
   components: {
     StatusBar,
     Tasks,
-    ScoreBoard
+    ScoreBoard,
+    Shop
+  },
+  data() {
+    return {
+      shopVisible: false
+    }
   }
 }
 </script>
