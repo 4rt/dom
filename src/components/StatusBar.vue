@@ -1,10 +1,10 @@
 <template>
   <header>
     <div class="lives">
-      Lives: {{playerData.lives}} <i class="nes-icon is-medium heart"></i>
+      Lives: {{playerData.lives}}<i class="nes-icon is-medium heart"></i>
     </div>
     <div class="level">
-      Level: {{ playerData.gold }} <i class="nes-icon is-medium star"></i>
+      Level: {{ playerData.gold }}<i class="nes-icon is-medium star"></i>
     </div>
     <div class="gold">
       <span>{{ playerData.gold }}</span> <i class="nes-icon coin is-medium"></i>

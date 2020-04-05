@@ -16,7 +16,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.cost }}<i class="nes-icon coin is-small"></i></td>
                 <td>
-                  <button type="button" class="nes-btn" @click="buy(item.id)">Buy</button>
+                  <button type="button" class="nes-btn buy-btn" @click="buy(item.id)">Buy</button>
                 </td>
               </tr>
             </tbody>
@@ -70,7 +70,7 @@ export default {
           } else {
             this.$modal.show({
               title: "Congratulations!",
-              text: "test"
+              text: "You just had a superior shopping day."
             });
           }
 
