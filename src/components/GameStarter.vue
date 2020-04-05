@@ -1,6 +1,6 @@
 <template>
   <section id="start-game">
-    <p class="nes-balloon from-left nes-pointer">Start Game</p>
+    <p class="nes-balloon from-left nes-pointer">Start The Game</p>
     <i class="nes-charmander"></i>
     <button type="button" class="nes-btn is-primary" @click="startGame()">Start!</button>
   </section>

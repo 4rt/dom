@@ -91,6 +91,7 @@ export default {
   height: 100%;
   transform: translate(-20px, -20px);
   background-color: rgba(0,0,0,0.9);
+  overflow: auto;
 }
 
 #shop {
