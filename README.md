@@ -25,6 +25,10 @@
 docker-compose up -d --build
 ```
 
+#### App runs
+
+http://localhost:8082/
+
 ### Manual Run
 
 ```
@@ -35,6 +39,10 @@ npm install
 ```
 npm run serve
 ```
+
+#### App runs
+
+http://localhost:8081/
 
 #### Run your end-to-end tests
 ```

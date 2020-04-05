@@ -9,8 +9,10 @@
 <script>
 import { mapActions } from "vuex";
 import { start } from "@/services/commonService";
+import { errorHandler } from "@/mixins/errorHandler";
 
 export default {
+  mixins: [errorHandler],
   methods: {
     ...mapActions("common", ["setPlayerData"]),
     startGame() {
@@ -20,7 +22,7 @@ export default {
           const { data } = res;
           this.setPlayerData(data);
         })
-        .catch((err) => console.error(err))
+        .catch((err) => this.handleError(err))
         .finally(() => this.$store.dispatch("common/hideLoading"));
     }
   }

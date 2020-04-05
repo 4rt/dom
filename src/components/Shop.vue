@@ -34,8 +34,10 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { getItems, buyItem } from "@/services/shopService";
+import { errorHandler } from "@/mixins/errorHandler";
 
 export default {
+  mixins: [errorHandler],
   computed: {
     ...mapGetters("shop", ["items"]),
     ...mapGetters("common", ["gameId"]),
@@ -50,7 +52,7 @@ export default {
           const { data } = res;
           this.setItems(data);
         })
-        .catch((err) => console.error(err))
+        .catch((err) => this.handleError(err))
         .finally(() => this.$store.dispatch("common/hideLoading"));
     },
     buy(itemId) {
@@ -73,7 +75,7 @@ export default {
           }
 
         })
-        .catch((err) => console.error(err))
+        .catch((err) => this.handleError(err))
         .finally(() => this.$store.dispatch("common/hideLoading"));
     }
   },

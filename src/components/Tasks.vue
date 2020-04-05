@@ -7,9 +7,11 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { getTasks } from "@/services/tasksService";
+import { errorHandler } from "@/mixins/errorHandler";
 import Task from "@/components/Task";
 
 export default {
+  mixins: [errorHandler],
   components: {
     Task
   },
@@ -28,7 +30,6 @@ export default {
           this.setTasksData(data);
         })
         .catch((err) => {
-          console.error(err);
           if(err.response && err.response.status === 410) {
             const playerData = {
               gameId: null,
@@ -46,6 +47,8 @@ export default {
             });
 
             this.setPlayerData(playerData);
+          } else {
+            this.handleError(err)
           }
         })
         .finally(() => this.$store.dispatch("common/hideLoading"));

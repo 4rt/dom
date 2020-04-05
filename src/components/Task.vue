@@ -11,8 +11,10 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { solveTask } from "@/services/tasksService";
+import { errorHandler } from "@/mixins/errorHandler";
 
 export default {
+  mixins: [errorHandler],
   props: {
     id: {
       required: true,
@@ -41,7 +43,7 @@ export default {
           this.$emit("solved");
           this.setPlayerData(playerData);
         })
-        .catch((err) => console.error(err))
+        .catch((err) => this.handleError(err))
         .finally(() => this.$store.dispatch("common/hideLoading"));
     }
   }
